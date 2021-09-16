@@ -1,0 +1,4 @@
+FROM nginx:alpine
+LABEL author ="Murilo Pupo de Oliveira"
+WORKDIR /usr/share/nginx/html
+COPY index.html ./

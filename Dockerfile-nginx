@@ -1,0 +1,2 @@
+FROM nginx:alpine
+LABEL author ="Murilo Pupo de Oliveira"
