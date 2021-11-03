@@ -1,0 +1,3 @@
+[submodule "aula12-api+mongodb-docker/miniapi"]
+	path = aula12-api+mongodb-docker/miniapi
+	url = https://github.com/mpupo/miniapi.git
