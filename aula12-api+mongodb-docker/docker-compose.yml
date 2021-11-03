@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
     container_name: mini-api-fatec
     environment: 
-      #- MONGO_DB_URI=mongodb://${DB_USERNAME}:${DB_PASSWORD}@db-mongo-fatec:27017/${DATABASE}
-      - MONGO_DB_URI=mongodb://db-mongo-fatec:27017/
+      - MONGO_DB_URI=mongodb://${DB_USERNAME}:${DB_PASSWORD}@db-mongo-fatec:27017/${DATABASE}
+      #- MONGO_DB_URI=mongodb://db-mongo-fatec:27017/
       - MONGO_DATABASE=${DATABASE}
       - DB_INITIAL_DATA=${DB_INITIAL_DATA}
     volumes:
@@ -20,10 +20,10 @@ services:
   db-mongo:
     image: mongo:4.4.10
     container_name: db-mongo-fatec
-    #environment: 
-    #  - MONGO_INITDB_DATABASE=${DATABASE}
-    #  - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
-    #  - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
+    environment: 
+      - MONGO_INITDB_DATABASE=${DATABASE}
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
     volumes:
       - mongodb_data_container:/data/db
     ports:
