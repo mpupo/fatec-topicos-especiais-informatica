@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: ./miniapi
+      dockerfile: Dockerfile
+    container_name: mini-api-fatec
+    environment: 
+      - MONGO_DB_URI=mongodb://${DB_USERNAME}:${DB_PASSWORD}@db-mongo-fatec:27017/${DATABASE}
+      - DB_INITIAL_DATA=${DB_INITIAL_DATA}
+    volumes:
+      - ./db:/usr/src/app/db
+    ports:
+      - "3000:3000"
+    networks: 
+      - atividade-api
+
+  db-mongo:
+    image: mongo:4.4.10
+    container_name: db-mongo-fatec
+    environment: 
+      - MONGO_INITDB_DATABASE=${DATABASE}
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - mongodb_data_container:/data/db
+    ports:
+      - "27017:27017"
+    networks: 
+      - atividade-api
+
+
+volumes:
+  mongodb_data_container:
+
+networks: 
+  atividade-api:
+    driver: bridge

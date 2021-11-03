@@ -1,0 +1,3 @@
+COPY alunos.json /alunos.json
+
+CMD mongoimport --uri mongodb://db-mongo-fatec:27017/topicos --collection alunos --type json --file /alunos.json --jsonArray
